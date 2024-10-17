@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { UsuarioTokenViewModel } from './core/auth/models/auth.models';
 import { AsyncPipe } from '@angular/common';
 import { UsuarioService } from './core/auth/services/usuario.service';
+import { NotificacaoService } from './core/notificacao/notificacao.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,10 @@ import { UsuarioService } from './core/auth/services/usuario.service';
 export class AppComponent implements OnInit {
   usuarioAutenticado$?: Observable<UsuarioTokenViewModel | undefined>;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(
+    private usuarioService: UsuarioService,
+    private notificacaoService: NotificacaoService
+  ) {}
 
   ngOnInit(): void {
     this.usuarioAutenticado$ = this.usuarioService.usuarioAutenticado;
@@ -23,5 +27,7 @@ export class AppComponent implements OnInit {
 
   efetuarLogout() {
     this.usuarioService.logout();
+
+    this.notificacaoService.sucesso('Logout realizado com sucesso!');
   }
 }
