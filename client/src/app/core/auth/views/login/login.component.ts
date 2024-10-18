@@ -31,8 +31,22 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
-      login: ['', [Validators.required, Validators.minLength(3)]],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
+      login: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      senha: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(30),
+        ],
+      ],
     });
   }
 
