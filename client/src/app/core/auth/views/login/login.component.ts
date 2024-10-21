@@ -11,6 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { AutenticarUsuarioViewModel } from '../../models/auth.models';
+import { AuthService } from '../../services/auth.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +32,12 @@ import { Router, RouterLink } from '@angular/router';
 export class LoginComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private usuarioService: UsuarioService
+  ) {
     this.form = this.fb.group({
       login: [
         '',
@@ -62,5 +70,13 @@ export class LoginComponent {
     if (this.form.invalid) {
       return;
     }
+
+    const loginUsuario: AutenticarUsuarioViewModel = this.form.value;
+
+    this.authService.login(loginUsuario).subscribe((res) => {
+      this.usuarioService.logarUsuario(res.usuario);
+
+      this.router.navigate(['/dashboard']);
+    });
   }
 }
