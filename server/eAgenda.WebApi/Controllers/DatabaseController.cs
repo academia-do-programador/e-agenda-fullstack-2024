@@ -28,22 +28,13 @@ public class DatabaseController : Controller
         
         try
         {
-            var compromissos = _context.Set<Compromisso>();            
-            var contatos = _context.Set<Contato>();            
-            var despesas = _context.Set<Despesa>();            
-            var categorias = _context.Set<Categoria>();            
-            var itensTarefa = _context.Set<ItemTarefa>();            
-            var tarefas = _context.Set<Tarefa>();
-            var usuarios = _context.Set<Usuario>();          
-            
-            compromissos.RemoveRange(compromissos);
-            contatos.RemoveRange(contatos);
-            despesas.RemoveRange(despesas);
-            categorias.RemoveRange(categorias);
-            itensTarefa.RemoveRange(itensTarefa);
-            tarefas.RemoveRange(tarefas);
-            usuarios.RemoveRange(usuarios);
-
+            await _context.Set<Contato>().IgnoreQueryFilters().ExecuteDeleteAsync();
+            await _context.Set<Compromisso>().IgnoreQueryFilters().ExecuteDeleteAsync();
+            await _context.Set<Despesa>().IgnoreQueryFilters().ExecuteDeleteAsync();
+            await _context.Set<Categoria>().IgnoreQueryFilters().ExecuteDeleteAsync();
+            await _context.Set<ItemTarefa>().IgnoreQueryFilters().ExecuteDeleteAsync();
+            await _context.Set<Tarefa>().IgnoreQueryFilters().ExecuteDeleteAsync();
+            await _context.Set<Usuario>().IgnoreQueryFilters().ExecuteDeleteAsync();
             await _context.SaveChangesAsync();
 
             return Ok("O banco de dados foi limpo com sucesso.");
