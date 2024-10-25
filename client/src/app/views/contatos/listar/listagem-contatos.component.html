@@ -5,6 +5,7 @@
     <section aria-label="Opções" class="row justify-content-start g-1 gap-2">
       <a
         mat-flat-button
+        data-cy="novoRegistro"
         class="col-lg-4 col-xxl-2 fs-6 py-4"
         [routerLink]="['/contatos', 'cadastrar']"
       >
@@ -17,6 +18,7 @@
 
     <div *ngFor="let item of contatos" class="col-md-6 col-lg-4">
       <mat-card
+        [attr.data-cy-list-item]="item.id"
         class="card-listagem card-animado mat-mdc-elevation-specific mat-elevation-z3 h-100"
       >
         <mat-card-header>
