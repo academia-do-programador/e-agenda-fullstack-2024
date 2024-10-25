@@ -13,15 +13,11 @@ declare namespace Cypress {
 function limparDados(): void {
   const url = Cypress.env('apiUrl') + '/db/limpar';
 
-  cy.request({
-    method: 'DELETE',
-    url: url,
-    failOnStatusCode: true,
-  }).then((response) => {
-    if (response.status === 200) {
+  fetch(url, { method: 'DELETE' }).then((resposta) => {
+    if (resposta.status === 200) {
       console.log('Dados limpos no banco de dados');
     } else {
-      throw new Error('Falha ao limpar dados: Status ' + response.status);
+      throw new Error('Falha ao limpar dados: Status ' + resposta.status);
     }
   });
 }

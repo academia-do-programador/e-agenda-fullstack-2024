@@ -18,6 +18,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { NotificacaoService } from '../../../notificacao/notificacao.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-registro',
@@ -41,7 +42,8 @@ export class RegistroComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private usuarioService: UsuarioService,
-    private notificacaoService: NotificacaoService
+    private notificacaoService: NotificacaoService,
+    private localStorageService: LocalStorageService
   ) {
     this.form = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -80,11 +82,12 @@ export class RegistroComponent {
 
   private processarSucesso(token: TokenViewModel): void {
     this.usuarioService.logarUsuario(token.usuario);
-
+    this.localStorageService.salvarTokenAutenticacao(token);
     this.router.navigate(['/dashboard']);
   }
 
   private processarFalha(erro: Error): any {
     this.notificacaoService.erro(erro.message);
+    this.localStorageService.limparDadosLocais();
   }
 }

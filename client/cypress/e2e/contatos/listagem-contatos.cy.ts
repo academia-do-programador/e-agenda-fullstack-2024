@@ -14,6 +14,6 @@ describe('Ao acessar a página de Listagem de Contatos', () => {
   it('Deve carregar a listagem corretamente', () => {
     cy.contains('h1', 'Listagem de Contatos');
 
-    cy.url().should('contain', '/contatos');
+    cy.url().should('contain', '/contatos/listar');
   });
 });
