@@ -3,9 +3,12 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { of, EMPTY, Observable, throwError, map, catchError } from 'rxjs';
 import {
+  CompromissoEditadoViewModel,
   CompromissoInseridoViewModel,
+  EditarCompromissoViewModel,
   InserirCompromissoViewModel,
   ListarCompromissoViewModel,
+  VisualizarCompromissoViewModel,
 } from '../models/compromisso.models';
 
 @Injectable({ providedIn: 'root' })
@@ -22,9 +25,30 @@ export class CompromissoService {
       .pipe(map(this.processarDados), catchError(this.processarFalha));
   }
 
+  public editar(
+    id: string,
+    registro: EditarCompromissoViewModel
+  ): Observable<CompromissoEditadoViewModel> {
+    const urlCompleto = `${this.url}/${id}`;
+
+    return this.http
+      .put<CompromissoEditadoViewModel>(urlCompleto, registro)
+      .pipe(map(this.processarDados), catchError(this.processarFalha));
+  }
+
   public selecionarTodos(): Observable<ListarCompromissoViewModel[]> {
     return this.http
       .get(this.url)
+      .pipe(map(this.processarDados), catchError(this.processarFalha));
+  }
+
+  public selecionarPorId(
+    id: string
+  ): Observable<VisualizarCompromissoViewModel> {
+    const urlCompleto = `${this.url}/visualizacao-completa/${id}`;
+
+    return this.http
+      .get<CompromissoEditadoViewModel>(urlCompleto)
       .pipe(map(this.processarDados), catchError(this.processarFalha));
   }
 
