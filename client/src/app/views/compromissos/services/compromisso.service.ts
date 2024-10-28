@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { of, EMPTY, Observable, throwError, map, catchError } from 'rxjs';
 import {
   CompromissoEditadoViewModel,
+  CompromissoExcluidoViewModel,
   CompromissoInseridoViewModel,
   EditarCompromissoViewModel,
   InserirCompromissoViewModel,
@@ -33,6 +34,14 @@ export class CompromissoService {
 
     return this.http
       .put<CompromissoEditadoViewModel>(urlCompleto, registro)
+      .pipe(map(this.processarDados), catchError(this.processarFalha));
+  }
+
+  public excluir(id: string): Observable<CompromissoExcluidoViewModel> {
+    const urlCompleto = `${this.url}/${id}`;
+
+    return this.http
+      .delete<CompromissoExcluidoViewModel>(urlCompleto)
       .pipe(map(this.processarDados), catchError(this.processarFalha));
   }
 
