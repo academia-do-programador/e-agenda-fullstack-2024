@@ -19,23 +19,21 @@ public class DatabaseController : Controller
         _env = env;
     }
 
-    // Este endpoint só funciona em ambiente de desenvolvimento
     [HttpDelete("limpar")]
     public async Task<IActionResult> LimparBancoDeDados()
     {
         if (!_env.IsDevelopment())
             return Unauthorized("Esta operação só é possível em um ambiente de desenvolvimento");
-        
+
         try
         {
-            await _context.Set<Contato>().IgnoreQueryFilters().ExecuteDeleteAsync();
             await _context.Set<Compromisso>().IgnoreQueryFilters().ExecuteDeleteAsync();
+            await _context.Set<Contato>().IgnoreQueryFilters().ExecuteDeleteAsync();
             await _context.Set<Despesa>().IgnoreQueryFilters().ExecuteDeleteAsync();
             await _context.Set<Categoria>().IgnoreQueryFilters().ExecuteDeleteAsync();
             await _context.Set<ItemTarefa>().IgnoreQueryFilters().ExecuteDeleteAsync();
             await _context.Set<Tarefa>().IgnoreQueryFilters().ExecuteDeleteAsync();
             await _context.Set<Usuario>().IgnoreQueryFilters().ExecuteDeleteAsync();
-            await _context.SaveChangesAsync();
 
             return Ok("O banco de dados foi limpo com sucesso.");
         }
