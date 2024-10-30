@@ -1,25 +1,27 @@
 import { Routes } from '@angular/router';
 import { ListagemDespesasComponent } from './listar/listagem-despesas.component';
-import { listarDespesasResolver } from './services/listar-despesas.resolver';
+import { listagemDespesasResolver } from './services/listagem-despesas.resolver';
+import { CadastroDespesaComponent } from './cadastrar/cadastro-despesa.component';
+import { listagemCategoriasResolver } from '../categorias/services/listagem-categorias.resolver';
 
 export const despesasRoutes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
   {
     path: 'listar',
     component: ListagemDespesasComponent,
-    resolve: { despesas: listarDespesasResolver },
+    resolve: { despesas: listagemDespesasResolver },
   },
-  // {
-  //   path: 'cadastrar',
-  //   component: CadastroDespesaComponent,
-  //   resolve: { categorias: listarCategoriasResolver },
-  // },
+  {
+    path: 'cadastrar',
+    component: CadastroDespesaComponent,
+    resolve: { categorias: listagemCategoriasResolver },
+  },
   // {
   //   path: 'editar/:id',
   //   component: EdicaoDespesaComponent,
   //   resolve: {
   //     despesa: visualizarDespesaResolver,
-  //     categorias: listarCategoriasResolver,
+  //     categorias: listagemCategoriasResolver,
   //   },
   // },
   // {
