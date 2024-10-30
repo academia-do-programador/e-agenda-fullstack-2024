@@ -5,6 +5,7 @@ import { CadastroDespesaComponent } from './cadastrar/cadastro-despesa.component
 import { listagemCategoriasResolver } from '../categorias/services/listagem-categorias.resolver';
 import { EdicaoDespesaComponent } from './editar/edicao-despesa.component';
 import { visualizarDespesaResolver } from './services/visualizar-despesa.resolver';
+import { ExclusaoDespesaComponent } from './exclusao/exclusao-despesa.component';
 
 export const despesasRoutes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
@@ -26,11 +27,11 @@ export const despesasRoutes: Routes = [
       categorias: listagemCategoriasResolver,
     },
   },
-  // {
-  //   path: 'excluir/:id',
-  //   component: ExclusaoDespesaComponent,
-  //   resolve: {
-  //     despesa: visualizarDespesaResolver,
-  //   },
-  // },
+  {
+    path: 'excluir/:id',
+    component: ExclusaoDespesaComponent,
+    resolve: {
+      despesa: visualizarDespesaResolver,
+    },
+  },
 ];
