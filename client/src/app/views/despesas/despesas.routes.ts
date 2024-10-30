@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
+import { ListagemDespesasComponent } from './listar/listagem-despesas.component';
+import { listarDespesasResolver } from './services/listar-despesas.resolver';
 
 export const despesasRoutes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
-  // {
-  //   path: 'listar',
-  //   component: ListagemDespesasComponent,
-  //   resolve: { despesas: listarDespesasResolver },
-  // },
+  {
+    path: 'listar',
+    component: ListagemDespesasComponent,
+    resolve: { despesas: listarDespesasResolver },
+  },
   // {
   //   path: 'cadastrar',
   //   component: CadastroDespesaComponent,
