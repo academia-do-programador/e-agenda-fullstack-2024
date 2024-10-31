@@ -4,6 +4,7 @@ import { listagemTarefasResolver } from './services/listagem-tarefas.resolver';
 import { CadastroTarefaComponent } from './cadastrar/cadastro-tarefa.component';
 import { EdicaoTarefaComponent } from './editar/edicao-tarefa.component';
 import { visualizarTarefaResolver } from './services/visualizar-tarefa.resolver';
+import { ExclusaoTarefaComponent } from './excluir/exclusao-tarefa.component';
 
 export const tarefasRoutes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
@@ -23,11 +24,11 @@ export const tarefasRoutes: Routes = [
       tarefa: visualizarTarefaResolver,
     },
   },
-  // {
-  //   path: 'excluir/:id',
-  //   component: ExclusaoTarefaComponent,
-  //   resolve: {
-  //     tarefa: visualizarTarefaResolver,
-  //   },
-  // },
+  {
+    path: 'excluir/:id',
+    component: ExclusaoTarefaComponent,
+    resolve: {
+      tarefa: visualizarTarefaResolver,
+    },
+  },
 ];
