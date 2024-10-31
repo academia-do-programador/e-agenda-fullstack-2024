@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
+import { ListagemTarefasComponent } from './listar/listagem-tarefas.component';
+import { listagemTarefasResolver } from './services/listagem-tarefas.resolver';
 
 export const tarefasRoutes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
-  // {
-  //   path: 'listar',
-  //   component: ListagemTarefasComponent,
-  //   resolve: { tarefas: listagemTarefasResolver },
-  // },
+  {
+    path: 'listar',
+    component: ListagemTarefasComponent,
+    resolve: { tarefas: listagemTarefasResolver },
+  },
   // {
   //   path: 'cadastrar',
   //   component: CadastroTarefaComponent,
