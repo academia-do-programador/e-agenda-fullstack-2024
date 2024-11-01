@@ -8,8 +8,6 @@ import { UsuarioService } from './core/auth/services/usuario.service';
 import { NotificacaoService } from './core/notificacao/notificacao.service';
 import { LocalStorageService } from './core/auth/services/local-storage.service';
 import { AuthService } from './core/auth/services/auth.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './core/auth/services/auth.interceptor';
 
 @Component({
   selector: 'app-root',

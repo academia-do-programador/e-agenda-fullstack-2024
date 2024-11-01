@@ -30,7 +30,7 @@
 
         <mat-card-content class="d-grid mt-4">
           <span><strong>Data:</strong> {{ item.data | date }}</span>
-          <span><strong>Valor:</strong> R$ {{ item.valor }}</span>
+          <span><strong>Valor:</strong> {{ item.valor | currency }}</span>
           <span
             ><strong>Forma de Pagamento:</strong>
             {{ item.formaPagamento }}</span

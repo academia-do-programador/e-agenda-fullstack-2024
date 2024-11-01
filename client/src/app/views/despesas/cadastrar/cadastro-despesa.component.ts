@@ -21,6 +21,7 @@ import {
   DespesaInseridaViewModel,
   FormaPgtoDespesaEnum,
 } from '../models/despesa.models';
+import { NgxCurrencyDirective } from 'ngx-currency';
 
 @Component({
   selector: 'app-cadastro-despesa',
@@ -35,6 +36,8 @@ import {
     MatIconModule,
     MatButtonModule,
     MatSelectModule,
+
+    NgxCurrencyDirective,
   ],
   templateUrl: './cadastro-despesa.component.html',
 })

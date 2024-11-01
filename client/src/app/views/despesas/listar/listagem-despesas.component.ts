@@ -1,4 +1,10 @@
-import { NgIf, NgForOf, AsyncPipe, DatePipe } from '@angular/common';
+import {
+  NgIf,
+  NgForOf,
+  AsyncPipe,
+  DatePipe,
+  CurrencyPipe,
+} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,6 +23,7 @@ import { ListarDespesaViewModel } from '../models/despesa.models';
     AsyncPipe,
     RouterLink,
     DatePipe,
+    CurrencyPipe,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
