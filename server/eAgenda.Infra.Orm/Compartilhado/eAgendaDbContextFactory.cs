@@ -16,9 +16,9 @@ namespace eAgenda.Infra.Orm.Compartilhado
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            string connectionString = configuration.GetConnectionString("Default");
+            string connectionString = configuration.GetConnectionString("SqlServer");
 
-            builder.UseNpgsql(connectionString);
+            builder.UseSqlServer(connectionString);
 
             return new EAgendaDbContext(builder.Options);
         }
