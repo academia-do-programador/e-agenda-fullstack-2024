@@ -15,7 +15,7 @@ public class Program
 
         builder.Services.ConfigurarValidacao();
         builder.Services.ConfigurarIdentity();
-        builder.Services.ConfigurarSerilog(builder.Logging, builder.Configuration);
+        builder.Services.ConfigurarSerilog(builder.Logging);
         builder.Services.ConfigurarAutoMapper();
         builder.Services.ConfigurarInjecaoDependencia(builder.Configuration);
         builder.Services.ConfigurarSwagger();

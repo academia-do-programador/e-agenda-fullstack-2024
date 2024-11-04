@@ -9,7 +9,7 @@
                  config.AddPolicy(nome, politica =>
                  {
                      politica
-                         .WithOrigins("http://localhost:4200") // Permite apenas a origem da aplicação Angular
+                            .SetIsOriginAllowed(origin => true) // Permite qualquer origem dinâmica
                          .AllowAnyHeader()
                          .AllowAnyMethod()
                          .AllowCredentials();

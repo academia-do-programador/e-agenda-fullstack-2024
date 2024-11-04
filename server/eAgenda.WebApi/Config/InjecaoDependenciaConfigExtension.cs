@@ -25,7 +25,8 @@ namespace eAgenda.WebApi.Config
 
             services.AddDbContext<IContextoPersistencia, EAgendaDbContext>(optionsBuilder =>
             {
-                optionsBuilder.UseSqlServer(connectionString);
+                optionsBuilder.UseSqlServer(connectionString,
+                    providerOptions => providerOptions.EnableRetryOnFailure());
             });
 
             services.AddTransient<ITenantProvider, ApiTenantProvider>();
