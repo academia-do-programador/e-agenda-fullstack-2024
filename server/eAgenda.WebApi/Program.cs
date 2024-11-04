@@ -11,6 +11,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        //teste
+
         builder.Services.ConfigurarValidacao();
         builder.Services.ConfigurarIdentity();
         builder.Services.ConfigurarSerilog(builder.Logging);
