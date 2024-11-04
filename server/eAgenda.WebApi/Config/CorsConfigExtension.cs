@@ -9,10 +9,9 @@
                  config.AddPolicy(nome, politica =>
                  {
                      politica
-                         .AllowAnyOrigin() // Permite apenas a origem da aplicação Angular
+                         .AllowAnyOrigin()
                          .AllowAnyHeader()
-                         .AllowAnyMethod()
-                         .AllowCredentials();
+                         .AllowAnyMethod();
                  });
              });
         }
