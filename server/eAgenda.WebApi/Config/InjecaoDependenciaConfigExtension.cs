@@ -25,7 +25,7 @@ namespace eAgenda.WebApi.Config
 
             services.AddDbContext<IContextoPersistencia, EAgendaDbContext>(optionsBuilder =>
             {
-                optionsBuilder.UseNpgsql(connectionString);
+                optionsBuilder.UseSqlServer(connectionString);
             });
 
             services.AddTransient<ITenantProvider, ApiTenantProvider>();

@@ -18,7 +18,7 @@ namespace eAgenda.Infra.Orm.Compartilhado
 
             string connectionString = configuration.GetConnectionString("Default");
 
-            builder.UseNpgsql(connectionString);
+            builder.UseSqlServer(connectionString);
 
             return new EAgendaDbContext(builder.Options);
         }
