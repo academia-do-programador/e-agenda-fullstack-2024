@@ -9,6 +9,7 @@ public class Program
 
     public static void Main(string[] args)
     {
+
         var builder = WebApplication.CreateBuilder(args);
 
         //teste
@@ -29,7 +30,7 @@ public class Program
 
         // Suporte à OpenAPI
         app.UseSwagger();
-        app.UseSwaggerUI();
+        app.UseSwaggerUI(); 
 
         // Migrações de banco de dados
         using var scope = app.Services.CreateScope();
